@@ -1,38 +1,42 @@
 ﻿namespace Crawler
 {
     using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Text;
     using AngleSharp;
     using PickUp.Data;
     using PickUp.Data.Common;
     using PickUp.Data.Models;
-    //using PickUp.Services.Data;
 
     public static class Program
     {
         public static void Main()
         {
-            //var db = new ApplicationDbContext();
-            //var repo = new DbRepository<Location>(db);
-            //var categoriesService = new LocationService(repo);
+            var db = new ApplicationDbContext();
+            var repo = new DbRepository<Location>(db);
 
-            //var configuration = Configuration.Default.WithDefaultLoader();
-            //var browsingContext = BrowsingContext.New(configuration);
+            var streamer = new StreamReader("../../data/cities.txt", Encoding.Default, true);
 
-            //for (int i = 1; i <= 500; i++)
-            //{
-            //    var url = $"http://vicove.com/vic-{i}";
-            //    var document = browsingContext.OpenAsync(url).Result;
-            //    var jokeContent = document.QuerySelector("#content_box .post-content").TextContent.Trim();
-            //    if (!string.IsNullOrWhiteSpace(jokeContent))
-            //    {
-            //        var categoryName = document.QuerySelector("#content_box .thecategory a").TextContent.Trim();
-            //        var category = categoriesService.EnsureCategory(categoryName);
-            //        var joke = new Joke { Category = category, Content = jokeContent };
-            //        db.Jokes.Add(joke);
-            //        db.SaveChanges();
-            //        Console.WriteLine(i);
-            //    }
-            //}
+            using (streamer)
+            {
+                while (streamer.ReadLine() != null)
+                {
+                    string currentLine = streamer.ReadLine();
+
+                    var location = new Location()
+                    {
+                        Name = currentLine
+                    };
+
+                    Console.WriteLine(currentLine);
+
+                    db.Locations.Add(location);
+                    db.SaveChanges();
+                }
+            }
+
+            Console.ReadLine();
         }
     }
 }
