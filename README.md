@@ -2,5 +2,5 @@
 
 # PickUp:
 
-##### A system where people publicate trips between two locations, so the other users can share the ride and the costs with them.
+##### A system where people publish about trips between two locations, so the other users can join the ride and share the costs.
 
