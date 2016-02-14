@@ -30,6 +30,43 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.IsDriver, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.IsDriver, new { id="isDriver"})
+        </div>
+    </div>
+    <h3 class="for-driver for-driver">Car details: </h3>
+    <div class="form-group for-driver">
+        @Html.LabelFor(m => m.CarBrand, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarBrand, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group for-driver">
+        @Html.LabelFor(m => m.CarModel, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarModel, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group for-driver">
+        @Html.LabelFor(m => m.CarYear, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarYear, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group for-driver">
+        @Html.LabelFor(m => m.CarRegistrationNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarRegistrationNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group for-driver">
+        @Html.LabelFor(m => m.CarColor, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarColor, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
@@ -38,4 +75,14 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $("#isDriver").on('click', function (event) {
+            var className = ".for-driver";
+            var $input = $(event.target);
+            console.log($input);
+            if (!$input.prop('checked')) $(className).hide();
+            else $(className).show();
+        });
+    </script>
 }

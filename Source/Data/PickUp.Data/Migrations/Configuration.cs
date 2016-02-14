@@ -27,8 +27,8 @@
                 // Create admin role
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole { Name = GlobalConstants.AdministratorRoleName };
-                roleManager.Create(role);
+                var administratorRole = new IdentityRole { Name = GlobalConstants.AdministratorRoleName };
+                roleManager.Create(administratorRole);
 
                 // Create admin user
                 var userStore = new UserStore<ApplicationUser>(context);
@@ -38,6 +38,12 @@
 
                 // Assign user to admin role
                 userManager.AddToRole(user.Id, GlobalConstants.AdministratorRoleName);
+
+                // Create driver and passenger roles
+                var driverRole = new IdentityRole { Name = GlobalConstants.DriverRoleName };
+                roleManager.Create(driverRole);
+                var passengerRole = new IdentityRole { Name = GlobalConstants.PassengerRoleName };
+                roleManager.Create(passengerRole);
             }
         }
     }

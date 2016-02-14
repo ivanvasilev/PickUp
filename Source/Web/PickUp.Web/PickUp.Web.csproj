@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +228,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Trips\ListTripsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -291,6 +293,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="Views\Trips\Trips.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

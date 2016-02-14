@@ -11,6 +11,7 @@
 
     using PickUp.Data.Models;
     using PickUp.Web.ViewModels.Account;
+    using Common;
 
     [Authorize]
     public class AccountController : BaseController
@@ -181,6 +182,15 @@
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    if (model.IsDriver)
+                    {
+                        this.UserManager.AddToRole(user.Id, GlobalConstants.DriverRoleName);
+                    }
+                    else
+                    {
+                        this.UserManager.AddToRole(user.Id, GlobalConstants.PassengerRoleName);
+                    }
+
                     return this.RedirectToAction("Index", "Home");
                 }
 
