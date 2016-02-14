@@ -35,7 +35,6 @@
         public string CarRegistrationNumber { get; set; }
 
         [Display(Name = "Year")]
-        [Range(1900, 2016)]
         public int CarYear { get; set; }
 
         [Display(Name = "Color")]

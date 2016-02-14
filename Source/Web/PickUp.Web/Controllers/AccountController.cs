@@ -12,6 +12,7 @@
     using PickUp.Data.Models;
     using PickUp.Web.ViewModels.Account;
     using Common;
+    using Services.Data.Contracts;
 
     [Authorize]
     public class AccountController : BaseController
@@ -23,14 +24,18 @@
 
         private ApplicationUserManager userManager;
 
-        public AccountController()
+        private IVehiclesService vehicles;
+
+        public AccountController(IVehiclesService vehicles)
         {
+            this.vehicles = vehicles;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IVehiclesService vehicles)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
+            this.vehicles = vehicles;
         }
 
         public ApplicationSignInManager SignInManager
@@ -171,8 +176,18 @@
         {
             if (this.ModelState.IsValid)
             {
+                var vehicle = new Vehicle()
+                {
+                    Model = model.CarModel,
+                    Brand = model.CarBrand,
+                    RegistrationNumber = model.CarRegistrationNumber,
+                    Year = model.CarYear,
+                    Color = model.CarColor
+                };
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
+                vehicle.DriverId = user.Id;
+                this.vehicles.Create(vehicle);
                 if (result.Succeeded)
                 {
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

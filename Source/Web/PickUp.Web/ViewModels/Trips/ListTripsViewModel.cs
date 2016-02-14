@@ -1,11 +1,13 @@
-﻿using System;
+﻿using PickUp.Data.Models;
+using PickUp.Web.Infrastructure.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace PickUp.Web.ViewModels.Trips
 {
-    public class ListTripsViewModel
+    public class ListTripsViewModel : IMapFrom<Trip>
     {
         public int Id { get; set; }
 
