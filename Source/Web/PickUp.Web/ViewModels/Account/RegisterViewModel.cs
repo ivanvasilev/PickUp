@@ -35,7 +35,7 @@
         public string CarRegistrationNumber { get; set; }
 
         [Display(Name = "Year")]
-        public int CarYear { get; set; }
+        public int? CarYear { get; set; }
 
         [Display(Name = "Color")]
         public string CarColor { get; set; }

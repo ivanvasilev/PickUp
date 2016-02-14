@@ -15,6 +15,12 @@
             this.trips = trips;
         }
 
+        public void Create(Trip trip)
+        {
+            this.trips.Add(trip);
+            this.trips.Save();
+        }
+
         public IQueryable<Trip> GetAll()
         {
             return this.trips.All();

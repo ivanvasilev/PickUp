@@ -6,5 +6,7 @@
     public interface ITripsService
     {
         IQueryable<Trip> GetAll();
+
+        void Create(Trip trip);
     }
 }
