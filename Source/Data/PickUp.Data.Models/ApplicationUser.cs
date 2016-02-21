@@ -21,6 +21,16 @@
             this.vehicles = new HashSet<Vehicle>();
         }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public int Age { get; set; }
+
+        public int? ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
+
         public virtual ICollection<Rate> Rates
         {
             get { return this.rates; }
