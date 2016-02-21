@@ -8,5 +8,7 @@
         IQueryable<Trip> GetAll();
 
         void Create(Trip trip);
+
+        Trip GetById(string id);
     }
 }

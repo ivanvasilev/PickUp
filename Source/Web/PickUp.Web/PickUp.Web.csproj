@@ -230,8 +230,12 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Rates\RateViewModel.cs" />
     <Compile Include="ViewModels\Trips\CreateTripViewModel.cs" />
     <Compile Include="ViewModels\Trips\ListTripsViewModel.cs" />
+    <Compile Include="ViewModels\Trips\TripDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Users\DriverViewModel.cs" />
+    <Compile Include="ViewModels\Users\PassengerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -298,12 +302,16 @@
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Trips\Trips.cshtml" />
     <Content Include="Views\CreateTrip\Index.cshtml" />
+    <Content Include="Views\Trips\ById.cshtml" />
+    <Content Include="Views\Shared\_TopDrivers.cshtml" />
+    <Content Include="Views\Shared\_TopPassengers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Rates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

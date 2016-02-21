@@ -1,30 +1,21 @@
-﻿using PickUp.Data.Models;
+﻿using AutoMapper;
+using PickUp.Data.Models;
+using PickUp.Services.Web;
 using PickUp.Web.Infrastructure.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using AutoMapper;
-using PickUp.Services.Web;
 
-namespace PickUp.Web.ViewModels.Home
+namespace PickUp.Web.ViewModels.Trips
 {
-    public class TripViewModel : IMapFrom<Trip>, IHaveCustomMappings
+    public class TripDetailsViewModel : IMapFrom<Trip>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
         public string From { get; set; }
 
         public string To { get; set; }
-
-        public string Url
-        {
-            get
-            {
-                IIdentifierProvider identifier = new IdentifierProvider();
-                return $"/Trip/{identifier.EncodeId(this.Id)}";
-            }
-        }
 
         public DateTime StartDate { get; set; }
 
@@ -34,13 +25,13 @@ namespace PickUp.Web.ViewModels.Home
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Trip, TripViewModel>()
+            configuration.CreateMap<Trip, TripDetailsViewModel>()
                 .ForMember(x => x.From, opt => opt.MapFrom(x => x.From.Name));
 
-            configuration.CreateMap<Trip, TripViewModel>()
+            configuration.CreateMap<Trip, TripDetailsViewModel>()
                 .ForMember(x => x.To, opt => opt.MapFrom(x => x.To.Name));
 
-            configuration.CreateMap<Trip, TripViewModel>()
+            configuration.CreateMap<Trip, TripDetailsViewModel>()
                 .ForMember(x => x.Driver, opt => opt.MapFrom(x => x.Driver.UserName));
         }
     }

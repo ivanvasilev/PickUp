@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PickUp.Web.ViewModels.Users.DriverViewModel>
+
+<h1>Top 10 drivers</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var driver in @Model)
+        {
+            <tr>
+                <td>@driver.UserName</td>
+                <td>@driver.Rating</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

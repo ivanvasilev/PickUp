@@ -3,27 +3,43 @@
     ViewBag.Title = "Home Page";
 }
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Departure time</th>
-            <th>Available seats</th>
-            <th>Driver</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var trip in @Model.Trips)
-        {
-            <tr>
-                <td>@trip.From</td>
-                <td>@trip.To</td>
-                <td>@trip.StartDate</td>
-                <td>@trip.AvailableSeats</td>
-                <td>@trip.Driver</td>
-            </tr>
-        }
-        <tr></tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure time</th>
+                    <th>Available seats</th>
+                    <th>Driver</th>
+                    @if (this.User.Identity.IsAuthenticated)
+            {
+                        <th>Details</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trip in @Model.Trips)
+            {
+                    <tr>
+                        <td>@trip.From</td>
+                        <td>@trip.To</td>
+                        <td>@trip.StartDate</td>
+                        <td>@trip.AvailableSeats</td>
+                        <td>@trip.Driver</td>
+                        @if (this.User.Identity.IsAuthenticated)
+                {
+                            <td><a href="@trip.Url">See more</a></td>
+                        }
+                    </tr>
+                }
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        @Html.Partial("_TopDrivers", @Model.TopDrivers)
+        @Html.Partial("_TopPassengers", @Model.TopPassengers)
+    </div>
+</div>
