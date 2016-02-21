@@ -1,0 +1,13 @@
+﻿<h2>Create</h2>
+@using (Html.BeginForm("UploadImage", "FileUpload", null, FormMethod.Post,
+                                          new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Image</legend>
+        <div class="editor-field">
+            <input id="ImagePath" title="Upload a product image" type="file" name="file" />
+        </div>
+        <p><input type="submit" value="Upload" /></p>
+    </fieldset>
+}

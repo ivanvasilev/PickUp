@@ -1,0 +1,15 @@
+﻿@model PickUp.Web.ViewModels.Users.UserDetailsViewModel
+
+<h1>@Model.UserName</h1>
+<h1>@Model.Age</h1>
+
+@{
+    var base64 = Convert.ToBase64String(@Model.Image.Content);
+    var imgSrc = String.Format("data:image/{0};base64,{1}",Model.Image.Extension, base64);
+}
+
+<img src="@imgSrc" />
+
+<div>
+    @Html.Partial("_UploadImagePartial")
+</div>

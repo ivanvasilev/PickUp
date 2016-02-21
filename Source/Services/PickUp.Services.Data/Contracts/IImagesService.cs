@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace PickUp.Services.Data.Contracts
 {
-    public interface IUsersService
+    public interface IImagesService
     {
-        ApplicationUser GetById(string id);
-
-        IQueryable<ApplicationUser> GetAll();
-
-        void Update(ApplicationUser user);
+        void Create(Image image);
     }
 }

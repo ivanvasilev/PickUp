@@ -20,7 +20,7 @@ namespace PickUp.Services.Data
 
         private DbContext Context { get; }
 
-        public ApplicationUser GetUserById(string id)
+        public ApplicationUser GetById(string id)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.Context));
             var user = userManager.FindById(id);
@@ -33,6 +33,15 @@ namespace PickUp.Services.Data
             var users = userManager.Users;
 
             return users;
+        }
+
+        public void Update(ApplicationUser user)
+        {
+            var store = new UserStore<ApplicationUser>(this.Context);
+            var userManager = new UserManager<ApplicationUser>(store);
+            var context = store.Context;
+            userManager.Update(user);
+            context.SaveChanges();
         }
     }
 }

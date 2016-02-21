@@ -202,10 +202,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CreateTripController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\TripsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +238,7 @@
     <Compile Include="ViewModels\Trips\TripDetailsViewModel.cs" />
     <Compile Include="ViewModels\Users\DriverViewModel.cs" />
     <Compile Include="ViewModels\Users\PassengerViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -305,12 +308,15 @@
     <Content Include="Views\Trips\ById.cshtml" />
     <Content Include="Views\Shared\_TopDrivers.cshtml" />
     <Content Include="Views\Shared\_TopPassengers.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Shared\_UploadImagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\FileUpload\" />
     <Folder Include="Views\Rates\" />
   </ItemGroup>
   <ItemGroup>
