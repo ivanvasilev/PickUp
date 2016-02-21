@@ -4,6 +4,6 @@
 
     public class IndexViewModel
     {
-
+        public IEnumerable<TripViewModel> Trips { get; set; }
     }
 }

@@ -2,5 +2,28 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>Вицове</h1>
-<h1>Категории</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure time</th>
+            <th>Available seats</th>
+            <th>Driver</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trip in @Model.Trips)
+        {
+            <tr>
+                <td>@trip.From</td>
+                <td>@trip.To</td>
+                <td>@trip.StartDate</td>
+                <td>@trip.AvailableSeats</td>
+                <td>@trip.Driver</td>
+            </tr>
+        }
+        <tr></tr>
+    </tbody>
+</table>
