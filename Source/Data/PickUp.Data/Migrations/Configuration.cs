@@ -8,6 +8,9 @@
 
     using PickUp.Common;
     using PickUp.Data.Models;
+    using System.IO;
+    using static System.Net.Mime.MediaTypeNames;
+    using System;
 
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -44,6 +47,25 @@
                 roleManager.Create(driverRole);
                 var passengerRole = new IdentityRole { Name = GlobalConstants.PassengerRoleName };
                 roleManager.Create(passengerRole);
+
+                // Create default profile picture
+                System.Drawing.Image img = System.Drawing.Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "App_Data/Pictures/default-profile-picture.png");
+                byte[] bytes;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    bytes = ms.ToArray();
+                }
+
+                var defaultPic = new PickUp.Data.Models.Image()
+                {
+                    FileName = "default-profile-picture",
+                    Content = bytes,
+                    Extension = "png"
+                };
+
+                context.Images.Add(defaultPic);
+                context.SaveChanges();
             }
         }
     }

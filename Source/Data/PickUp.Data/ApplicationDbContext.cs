@@ -26,6 +26,8 @@
 
         public IDbSet<Location> Locations { get; set; }
 
+        public IDbSet<Image> Images { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
