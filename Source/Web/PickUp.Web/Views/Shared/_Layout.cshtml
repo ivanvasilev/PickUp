@@ -20,7 +20,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
-                    <li>@Html.ActionLink("Create trip", "Index", "CreateTrip", new { area = string.Empty }, null)</li>
+                    @if (this.User.IsInRole("Driver") || this.User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Create trip", "Index", "CreateTrip", new { area = string.Empty }, null)</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
