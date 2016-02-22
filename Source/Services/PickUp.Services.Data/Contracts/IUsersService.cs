@@ -14,5 +14,9 @@ namespace PickUp.Services.Data.Contracts
         IQueryable<ApplicationUser> GetAll();
 
         void Update(ApplicationUser user);
+
+        void Create(ApplicationUser user, string password);
+
+        void Delete(ApplicationUser user);
     }
 }

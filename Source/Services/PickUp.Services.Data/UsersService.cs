@@ -43,5 +43,23 @@ namespace PickUp.Services.Data
             userManager.Update(user);
             context.SaveChanges();
         }
+
+        public void Create(ApplicationUser user, string password)
+        {
+            var userStore = new UserStore<ApplicationUser>(this.Context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            userManager.Create(user, password);
+            var context = userStore.Context;
+            context.SaveChanges();
+        }
+
+        public void Delete(ApplicationUser user)
+        {
+            var userStore = new UserStore<ApplicationUser>(this.Context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            userManager.Delete(user);
+            var context = userStore.Context;
+            context.SaveChanges();
+        }
     }
 }
