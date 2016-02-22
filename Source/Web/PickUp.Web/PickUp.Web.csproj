@@ -209,6 +209,7 @@
     <Compile Include="Controllers\CreateTripController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\TripsController.cs" />
@@ -400,6 +401,7 @@
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\FileUpload\" />
+    <Folder Include="Views\Locations\" />
     <Folder Include="Views\Rates\" />
   </ItemGroup>
   <ItemGroup>
