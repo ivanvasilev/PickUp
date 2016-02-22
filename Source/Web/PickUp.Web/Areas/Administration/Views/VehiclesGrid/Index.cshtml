@@ -1,0 +1,37 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<PickUp.Web.Areas.Administration.ViewModels.Vehicles.VehicleGridViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Id);
+          columns.Bound(c => c.Brand);
+          columns.Bound(c => c.Model);
+          columns.Bound(c => c.RegistrationNumber);
+          columns.Bound(c => c.Year);
+          columns.Bound(c => c.Color);
+          columns.Bound(c => c.DriverName);
+          columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Vehicles_Read", "VehiclesGrid"))
+          .Create(create => create.Action("Vehicles_Create", "VehiclesGrid"))
+          .Update(update => update.Action("Vehicles_Update", "VehiclesGrid"))
+          .Destroy(destroy => destroy.Action("Vehicles_Destroy", "VehiclesGrid"))
+      )
+)

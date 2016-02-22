@@ -204,12 +204,15 @@
     <Compile Include="Areas\Administration\Controllers\LocationsGridController.cs" />
     <Compile Include="Areas\Administration\Controllers\TripsGridController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersGridController.cs" />
+    <Compile Include="Areas\Administration\Controllers\VehiclesGridController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Locations\LocationGridInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Locations\LocationGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Trips\TripGridInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Trips\TripGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserGridInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserGridViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Vehicles\VehicleGridInputModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Vehicles\VehicleGridViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CreateTripController.cs" />
@@ -349,6 +352,7 @@
     <Content Include="Areas\Administration\Views\UsersGrid\Index.cshtml" />
     <Content Include="Areas\Administration\Views\TripsGrid\Index.cshtml" />
     <Content Include="Areas\Administration\Views\LocationsGrid\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\VehiclesGrid\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -409,10 +413,10 @@
     <Content Include="Views\Shared\EditorTemplates\TripGridViewModel.cshtml" />
     <Content Include="Views\TripsList\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\LocationGridViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\VehicleGridViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\ViewModels\Vehicles\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\FileUpload\" />
