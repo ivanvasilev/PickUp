@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.ViewModels.TripsList
+﻿namespace PickUp.Web.ViewModels.TripsList
 {
+    using System.Collections.Generic;
+
     public class TripsListViewModel
     {
         public int TotalPages { get; set; }

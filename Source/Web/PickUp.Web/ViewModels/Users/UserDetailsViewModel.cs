@@ -1,13 +1,10 @@
-﻿using PickUp.Data.Models;
-using PickUp.Web.Infrastructure.Mapping;
-using PickUp.Web.ViewModels.Trips;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.ViewModels.Users
+﻿namespace PickUp.Web.ViewModels.Users
 {
+    using System.Collections.Generic;
+    using PickUp.Data.Models;
+    using PickUp.Web.Infrastructure.Mapping;
+    using PickUp.Web.ViewModels.Trips;
+
     public class UserDetailsViewModel : IMapFrom<ApplicationUser>
     {
         public string Email { get; set; }

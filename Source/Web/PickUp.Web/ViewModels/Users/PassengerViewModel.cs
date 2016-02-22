@@ -1,12 +1,9 @@
-﻿using PickUp.Data.Models;
-using PickUp.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.ViewModels.Users
+﻿namespace PickUp.Web.ViewModels.Users
 {
+    using System.Collections.Generic;
+    using PickUp.Data.Models;
+    using PickUp.Web.Infrastructure.Mapping;
+
     public class PassengerViewModel : IMapFrom<ApplicationUser>
     {
         public string UserName { get; set; }

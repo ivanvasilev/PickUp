@@ -1,14 +1,9 @@
-﻿using PickUp.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PickUp.Data.Models;
-using PickUp.Data.Common;
-
-namespace PickUp.Services.Data
+﻿namespace PickUp.Services.Data
 {
+    using PickUp.Data.Common;
+    using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
+
     public class ImagesService : IImagesService
     {
         private IDbRepository<Image> images;

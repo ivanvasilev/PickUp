@@ -1,13 +1,10 @@
-﻿using PickUp.Data.Models;
-using PickUp.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
-
-namespace PickUp.Web.Areas.Administration.ViewModels.Vehicles
+﻿namespace PickUp.Web.Areas.Administration.ViewModels.Vehicles
 {
+    using System;
+    using AutoMapper;
+    using PickUp.Data.Models;
+    using PickUp.Web.Infrastructure.Mapping;
+
     public class VehicleGridViewModel : IMapFrom<Vehicle>, IHaveCustomMappings
     {
         public int Id { get; set; }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.Areas.Administration.ViewModels.Locations
+﻿namespace PickUp.Web.Areas.Administration.ViewModels.Locations
 {
     public class LocationGridInputModel
     {

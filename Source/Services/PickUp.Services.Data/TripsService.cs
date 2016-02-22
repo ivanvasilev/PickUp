@@ -1,16 +1,15 @@
 ﻿namespace PickUp.Services.Data
 {
-    using System;
     using System.Linq;
-    using PickUp.Services.Data.Contracts;
     using PickUp.Data.Common;
     using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
     using Web;
 
     public class TripsService : ITripsService
     {
-        private IDbRepository<Trip> trips;
         private readonly IIdentifierProvider identifierProvider;
+        private IDbRepository<Trip> trips;
 
         public TripsService(IDbRepository<Trip> trips, IIdentifierProvider identifierProvider)
         {

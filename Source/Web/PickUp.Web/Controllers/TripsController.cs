@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
-using PickUp.Services.Data.Contracts;
-using PickUp.Web.Infrastructure.Mapping;
-using PickUp.Web.ViewModels.Trips;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PickUp.Web.Controllers
+﻿namespace PickUp.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using PickUp.Services.Data.Contracts;
+    using PickUp.Web.Infrastructure.Mapping;
+    using PickUp.Web.ViewModels.Trips;
+
     public class TripsController : BaseController
     {
         private ITripsService trips;

@@ -4,14 +4,12 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-
     using PickUp.Data.Models;
     using PickUp.Web.ViewModels.Account;
-    using Common;
     using Services.Data.Contracts;
 
     [Authorize]

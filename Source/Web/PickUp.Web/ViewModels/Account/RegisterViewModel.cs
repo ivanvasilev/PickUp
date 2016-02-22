@@ -1,8 +1,8 @@
 ﻿namespace PickUp.Web.ViewModels.Account
 {
-    using Common;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Common;
 
     public class RegisterViewModel
     {

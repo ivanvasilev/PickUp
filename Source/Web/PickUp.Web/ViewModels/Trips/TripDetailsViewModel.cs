@@ -1,15 +1,12 @@
-﻿using AutoMapper;
-using PickUp.Data.Models;
-using PickUp.Services.Web;
-using PickUp.Web.Infrastructure.Mapping;
-using PickUp.Web.ViewModels.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.ViewModels.Trips
+﻿namespace PickUp.Web.ViewModels.Trips
 {
+    using System;
+    using System.Collections.Generic;
+    using AutoMapper;
+    using PickUp.Data.Models;
+    using PickUp.Web.Infrastructure.Mapping;
+    using PickUp.Web.ViewModels.Users;
+
     public class TripDetailsViewModel : IMapFrom<Trip>, IHaveCustomMappings
     {
         public int Id { get; set; }

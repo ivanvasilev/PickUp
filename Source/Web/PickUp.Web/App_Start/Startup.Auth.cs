@@ -1,16 +1,13 @@
 ﻿namespace PickUp.Web
 {
     using System;
-
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
     using Microsoft.Owin.Security.Cookies;
-
+    using Owin;
     using PickUp.Data;
     using PickUp.Data.Models;
-
-    using Owin;
 
     public partial class Startup
     {

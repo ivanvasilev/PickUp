@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using PickUp.Data.Common.Models;
     using System.ComponentModel.DataAnnotations.Schema;
+    using PickUp.Data.Common.Models;
 
     public class Trip : BaseModel<int>
     {

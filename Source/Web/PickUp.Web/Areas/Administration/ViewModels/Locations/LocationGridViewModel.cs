@@ -1,12 +1,9 @@
-﻿using PickUp.Data.Models;
-using PickUp.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.Areas.Administration.ViewModels.Locations
+﻿namespace PickUp.Web.Areas.Administration.ViewModels.Locations
 {
+    using System;
+    using PickUp.Data.Models;
+    using PickUp.Web.Infrastructure.Mapping;
+
     public class LocationGridViewModel : IMapFrom<Location>
     {
         public int Id { get; set; }

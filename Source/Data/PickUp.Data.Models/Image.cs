@@ -1,12 +1,7 @@
-﻿using PickUp.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PickUp.Data.Models
+﻿namespace PickUp.Data.Models
 {
+    using PickUp.Data.Common.Models;
+
     public class Image : BaseModel<int>
     {
         public new int? Id { get; set; }

@@ -64,7 +64,7 @@
     <Compile Include="Contracts\ITripsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVehiclesService.cs" />
-    <Compile Include="Contracts\IVotesService.cs" />
+    <Compile Include="Contracts\IRatesService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="LocationsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,14 +1,9 @@
-﻿using PickUp.Data.Common;
-using PickUp.Data.Models;
-using PickUp.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PickUp.Services.Data
+﻿namespace PickUp.Services.Data
 {
+    using PickUp.Data.Common;
+    using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
+
     public class RatesService : IRatesService
     {
         private IDbRepository<Rate> rates;

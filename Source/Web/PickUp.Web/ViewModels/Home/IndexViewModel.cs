@@ -1,7 +1,7 @@
 ﻿namespace PickUp.Web.ViewModels.Home
 {
-    using Users;
     using System.Collections.Generic;
+    using Users;
 
     public class IndexViewModel
     {

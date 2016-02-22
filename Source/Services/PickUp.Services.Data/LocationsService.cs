@@ -1,10 +1,9 @@
 ﻿namespace PickUp.Services.Data
 {
-    using System;
     using System.Linq;
+    using PickUp.Data.Common;
     using PickUp.Data.Models;
     using PickUp.Services.Data.Contracts;
-    using PickUp.Data.Common;
 
     public class LocationsService : ILocationsService
     {

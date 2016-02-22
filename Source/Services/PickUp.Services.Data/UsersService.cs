@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using PickUp.Data.Models;
-using PickUp.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PickUp.Services.Data
+﻿namespace PickUp.Services.Data
 {
+    using System.Data.Entity;
+    using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
+
     public class UsersService : IUsersService
     {
         public UsersService(DbContext context)

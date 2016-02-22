@@ -2,8 +2,8 @@
 {
     using PickUp.Data.Models;
 
-    public interface IImagesService
+    public interface IRatesService
     {
-        void Create(Image image);
+        void Create(Rate vote);
     }
 }

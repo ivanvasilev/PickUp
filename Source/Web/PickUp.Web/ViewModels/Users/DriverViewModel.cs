@@ -1,10 +1,8 @@
 ﻿namespace PickUp.Web.ViewModels.Users
 {
     using System.Collections.Generic;
-    using System.Linq;
     using Data.Models;
     using Infrastructure.Mapping;
-    using Rates;
 
     public class DriverViewModel : IMapFrom<ApplicationUser>
     {

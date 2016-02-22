@@ -1,12 +1,8 @@
-﻿using PickUp.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PickUp.Services.Data.Contracts
+﻿namespace PickUp.Services.Data.Contracts
 {
+    using System.Linq;
+    using PickUp.Data.Models;
+
     public interface IUsersService
     {
         ApplicationUser GetById(string id);

@@ -1,7 +1,7 @@
 ﻿namespace PickUp.Services.Data.Contracts
 {
-    using PickUp.Data.Models;
     using System.Linq;
+    using PickUp.Data.Models;
 
     public interface ITripsService
     {

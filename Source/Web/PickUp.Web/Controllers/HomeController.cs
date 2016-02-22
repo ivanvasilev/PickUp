@@ -2,14 +2,9 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-
     using Infrastructure.Mapping;
-
-    //using Services.Data;
-
-    using ViewModels.Home;
     using Services.Data.Contracts;
-    using Microsoft.AspNet.Identity;
+    using ViewModels.Home;
     using ViewModels.Users;
 
     public class HomeController : BaseController

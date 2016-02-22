@@ -2,14 +2,11 @@
 {
     using System;
     using System.Data.Entity;
-    using System.Linq;
-
-    using Common.Models;
-
-    using Microsoft.AspNet.Identity.EntityFramework;
-
-    using PickUp.Data.Models;
     using System.Data.Entity.ModelConfiguration.Conventions;
+    using System.Linq;
+    using Common.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using PickUp.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -41,12 +38,6 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder
-            //    .Entity<Trip>()
-            //    .HasRequired(p => p.To)
-            //    .WithRequiredDependent()
-            //    .WillCascadeOnDelete(true);
-
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 

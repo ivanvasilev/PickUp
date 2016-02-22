@@ -1,16 +1,13 @@
 ﻿namespace PickUp.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
-
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-
     using PickUp.Common;
     using PickUp.Data.Models;
-    using System.IO;
-    using static System.Net.Mime.MediaTypeNames;
-    using System;
 
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {

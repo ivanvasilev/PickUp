@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
-using PickUp.Data.Models;
-using PickUp.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PickUp.Web.Controllers
+﻿namespace PickUp.Web.Controllers
 {
+    using System.IO;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
+
     public class FileUploadController : Controller
     {
         private IImagesService images;

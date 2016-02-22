@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.Areas.Administration.ViewModels.Trips
+﻿namespace PickUp.Web.Areas.Administration.ViewModels.Trips
 {
+    using System;
+
     public class TripGridInputModel
     {
         public DateTime StartDate { get; set; }

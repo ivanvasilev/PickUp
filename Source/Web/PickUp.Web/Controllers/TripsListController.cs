@@ -1,14 +1,12 @@
-﻿using PickUp.Services.Data.Contracts;
-using PickUp.Web.Infrastructure.Mapping;
-using PickUp.Web.ViewModels.TripsList;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PickUp.Web.Controllers
+﻿namespace PickUp.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Infrastructure.Mapping;
+    using Services.Data.Contracts;
+    using ViewModels.TripsList;
+
     public class TripsListController : Controller
     {
         private const int TripsPerPage = 10;
@@ -38,22 +36,19 @@ namespace PickUp.Web.Controllers
                     .To<PageableTripViewModel>()
                     .ToList();
 
-            //if (!string.IsNullOrEmpty(from))
-            //{
-            //    tripsToShow = tripsToShow.Where(x => x.From == from).ToList();
-            //}
-
-            //if (!string.IsNullOrEmpty(to))
-            //{
-            //    tripsToShow = tripsToShow.Where(x => x.To == to).ToList();
-            //}
-
-            //if (!string.IsNullOrEmpty(datepicker))
-            //{
-            //    var givenDate = DateTime.Parse(datepicker);
-            //    tripsToShow = tripsToShow.Where(x => x.StartDate >= givenDate).ToList();
-            //}
-
+            // if (!string.IsNullOrEmpty(from))
+            // {
+            //     tripsToShow = tripsToShow.Where(x => x.From == from).ToList();
+            // }
+            // if (!string.IsNullOrEmpty(to))
+            // {
+            //     tripsToShow = tripsToShow.Where(x => x.To == to).ToList();
+            // }
+            // if (!string.IsNullOrEmpty(datepicker))
+            // {
+            //     var givenDate = DateTime.Parse(datepicker);
+            //     tripsToShow = tripsToShow.Where(x => x.StartDate >= givenDate).ToList();
+            // }
             tripsToShow = tripsToShow.Skip(pagesToSkip).Take(TripsPerPage).ToList();
 
                 var tripsList = new TripsListViewModel()

@@ -1,12 +1,8 @@
-﻿using PickUp.Data.Models;
-using PickUp.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.Areas.Administration.ViewModels
+﻿namespace PickUp.Web.Areas.Administration.ViewModels
 {
+    using PickUp.Data.Models;
+    using PickUp.Web.Infrastructure.Mapping;
+
     public class UserGridInputModel : IMapFrom<ApplicationUser>
     {
         public int Age { get; set; }

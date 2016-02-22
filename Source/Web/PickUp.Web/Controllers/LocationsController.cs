@@ -1,12 +1,9 @@
-﻿using PickUp.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PickUp.Web.Controllers
+﻿namespace PickUp.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using PickUp.Services.Data.Contracts;
+
     public class LocationsController : BaseController
     {
         private ILocationsService locations;
