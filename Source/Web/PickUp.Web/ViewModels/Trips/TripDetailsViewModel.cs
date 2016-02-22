@@ -37,7 +37,7 @@ namespace PickUp.Web.ViewModels.Trips
                 .ForMember(x => x.To, opt => opt.MapFrom(x => x.To.Name));
 
             configuration.CreateMap<Trip, TripDetailsViewModel>()
-                .ForMember(x => x.Driver, opt => opt.MapFrom(x => x.Driver.UserName));
+                .ForMember(x => x.Driver, opt => opt.MapFrom(x => x.Driver.Email));
         }
     }
 }

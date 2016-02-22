@@ -34,14 +34,19 @@ namespace PickUp.Web.Controllers
             var viewModel = this.Mapper.Map<TripDetailsViewModel>(trip);
             this.ViewBag.IsCurrentUserJoinedTheTrip = false;
             this.ViewBag.IsCurrentUserTheDriver = false;
+            if (this.User.Identity.Name == viewModel.Driver)
+            {
+                this.ViewBag.IsCurrentUserTheDriver = true;
+            }
+
             foreach (var passenger in viewModel.Passengers)
             {
-                if (passenger.UserName == this.User.Identity.Name)
+                if (passenger.Email == this.User.Identity.Name)
                 {
                     this.ViewBag.IsCurrentUserJoinedTheTrip = true;
                 }
 
-                if (passenger.UserName == viewModel.Driver)
+                if (passenger.Email == viewModel.Driver)
                 {
                     this.ViewBag.IsCurrentUserTheDriver = true;
                 }

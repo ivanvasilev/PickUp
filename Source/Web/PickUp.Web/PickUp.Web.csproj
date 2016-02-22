@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CreateTripController.cs" />
+    <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
@@ -419,6 +420,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Edit\" />
     <Folder Include="Views\FileUpload\" />
     <Folder Include="Views\Locations\" />
     <Folder Include="Views\Rates\" />
