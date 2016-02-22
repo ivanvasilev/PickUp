@@ -201,8 +201,11 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\LocationsGridController.cs" />
     <Compile Include="Areas\Administration\Controllers\TripsGridController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersGridController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Locations\LocationGridInputModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Locations\LocationGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Trips\TripGridInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Trips\TripGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserGridInputModel.cs" />
@@ -345,6 +348,7 @@
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\UsersGrid\Index.cshtml" />
     <Content Include="Areas\Administration\Views\TripsGrid\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\LocationsGrid\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -404,9 +408,11 @@
     <Content Include="Views\Shared\EditorTemplates\UserGridViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TripGridViewModel.cshtml" />
     <Content Include="Views\TripsList\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\LocationGridViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\ViewModels\Vehicles\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\FileUpload\" />

@@ -1,0 +1,32 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<PickUp.Web.Areas.Administration.ViewModels.Locations.LocationGridViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Id);
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Locations_Read", "LocationsGrid"))
+          .Create(create => create.Action("Locations_Create", "LocationsGrid"))
+          .Update(update => update.Action("Locations_Update", "LocationsGrid"))
+          .Destroy(destroy => destroy.Action("Locations_Destroy", "LocationsGrid"))
+      )
+)
