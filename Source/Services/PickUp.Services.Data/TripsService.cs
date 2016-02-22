@@ -35,5 +35,22 @@
             var trip = this.trips.GetById(intId);
             return trip;
         }
+
+        public void Update(Trip trip)
+        {
+            this.trips.Save();
+        }
+
+        public void Delete(Trip trip)
+        {
+            this.trips.Delete(trip);
+            this.trips.Save();
+        }
+
+        public Trip GetByIntId(int id)
+        {
+            var trip = this.trips.GetById(id);
+            return trip;
+        }
     }
 }

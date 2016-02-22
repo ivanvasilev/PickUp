@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-using PickUp.Data.Models;
-using PickUp.Services.Data;
-using PickUp.Web.Infrastructure.Mapping;
-using PickUp.Web.Areas.Administration.ViewModels;
-using PickUp.Services.Data.Contracts;
-
-namespace PickUp.Web.Areas.Administration.Controllers
+﻿namespace PickUp.Web.Areas.Administration.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
+    using PickUp.Web.Areas.Administration.ViewModels;
+    using PickUp.Web.Infrastructure.Mapping;
+
     [Authorize]
     public class UsersGridController : Controller
     {
@@ -92,11 +85,5 @@ namespace PickUp.Web.Areas.Administration.Controllers
 
             return this.Json(new[] { user }.ToDataSourceResult(request, this.ModelState));
         }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    comments.Dispose();
-        //    base.Dispose(disposing);
-        //}
     }
 }
