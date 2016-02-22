@@ -216,6 +216,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\TripsController.cs" />
+    <Compile Include="Controllers\TripsListController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +243,8 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Rates\RateViewModel.cs" />
+    <Compile Include="ViewModels\TripsList\PageableTripViewModel.cs" />
+    <Compile Include="ViewModels\TripsList\TripsListViewModel.cs" />
     <Compile Include="ViewModels\Trips\CreateTripViewModel.cs" />
     <Compile Include="ViewModels\Trips\ListTripsViewModel.cs" />
     <Compile Include="ViewModels\Trips\TripDetailsViewModel.cs" />
@@ -400,6 +403,7 @@
     <Content Include="Views\Shared\_UploadImagePartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UserGridViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TripGridViewModel.cshtml" />
+    <Content Include="Views\TripsList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,108 @@
+﻿@model PickUp.Web.ViewModels.TripsList.TripsListViewModel
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+@*@using (Html.BeginForm("Index", "TripsList", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-3 text-center">
+            @Html.Label("From")
+            @Html.DropDownList("from", (SelectList)ViewData["Locations"], new { id = "from", @class = "form-control", style = "display: inline-block" })
+        </div>
+        <div class="col-lg-3 text-center">
+            @Html.Label("To")
+            @Html.DropDownList("to", (SelectList)ViewData["Locations"], new { id = "to", @class = "form-control", style = "display: inline-block" })
+        </div>
+        <div class="col-lg-3 text-center">
+            @Html.Label("Start date")
+            @(Html.Kendo().DatePicker()
+              .Name("datepicker")
+              .Value(DateTime.Now)
+              .Format("dd.MM.yyyy")
+              .HtmlAttributes(new { style = "width: 100%" })
+            )
+        </div>
+        <div class="col-lg-3 text-center">
+            <br />
+            <input type="submit" value="Search" />
+        </div>
+    </div>
+}*@
+<div style="display: none">
+    <div id="fromValue"></div>
+    <div id="toValue"></div>
+    <div id="startdateValue"></div>
+</div>
+<h2>Trips - Page @Model.CurrentPage</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Available Seats</th>
+            <th>Start date</th>
+            <th>Driver</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trip in Model.Trips)
+        {
+            <tr>
+                <td>
+                    @trip.From
+                </td>
+                <td>
+                    @trip.To
+                </td>
+                <td>
+                    @trip.AvailableSeats
+                </td>
+                <td>
+                    @trip.StartDate
+                </td>
+                <td>
+                    @trip.Driver
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        @if (Model.CurrentPage != 1)
+        {
+            <li>
+                <a class="page-button" href="/TripsList/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            var className = string.Empty;
+            if (Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+            <li class="@className"><a class="page-button" href="/TripsList/Index/@i">@i</a></li>
+        }
+        @if (Model.CurrentPage != Model.TotalPages)
+        {
+            <li>
+                <a class="page-button" href="/TripsList/Index/@(Model.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+@*@section Scripts
+{ 
+    <script>
+        var queryString = location.search;
+
+        $('.page-button').attr("href", $('.page-button').attr("href") + queryString);
+    </script>
+}*@
