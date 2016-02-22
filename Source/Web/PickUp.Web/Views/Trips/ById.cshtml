@@ -9,7 +9,11 @@
             <div class="row">@Model.AvailableSeats</div>
             <div class="row">Available Seats</div>
         </div>
-        <input id="join" type="button" class="btn btn-success" value="Join" />
+        @if (!this.ViewBag.IsCurrentUserJoinedTheTrip && !this.ViewBag.IsCurrentUserTheDriver && Model.AvailableSeats > 0)
+        {
+            <input id="join" type="button" class="btn btn-success" value="Join" />
+        }
+        
     </div>
     <div class="col-md-10">
         <div class="row">

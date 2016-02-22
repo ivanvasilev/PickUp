@@ -32,6 +32,21 @@ namespace PickUp.Web.Controllers
         {
             var trip = this.trips.GetById(id);
             var viewModel = this.Mapper.Map<TripDetailsViewModel>(trip);
+            this.ViewBag.IsCurrentUserJoinedTheTrip = false;
+            this.ViewBag.IsCurrentUserTheDriver = false;
+            foreach (var passenger in viewModel.Passengers)
+            {
+                if (passenger.UserName == this.User.Identity.Name)
+                {
+                    this.ViewBag.IsCurrentUserJoinedTheTrip = true;
+                }
+
+                if (passenger.UserName == viewModel.Driver)
+                {
+                    this.ViewBag.IsCurrentUserTheDriver = true;
+                }
+            }
+
             return this.View(viewModel);
         }
 
@@ -42,6 +57,7 @@ namespace PickUp.Web.Controllers
             var passengerId = this.User.Identity.GetUserId();
             var passenger = this.users.GetById(passengerId);
             tripToJoin.Passengers.Add(passenger);
+            tripToJoin.AvailableSeats -= 1;
             this.trips.Update(tripToJoin);
 
             return this.Json(new { PassengerName = passenger.UserName });
