@@ -24,8 +24,7 @@
                     ratesSum += rate.Value;
                 }
 
-                var rating = ratesSum / (decimal)count;
-                return rating;
+                return ratesSum;
             }
         }
 
