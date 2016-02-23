@@ -23,7 +23,7 @@
 
         public string Driver { get; set; }
 
-        public IEnumerable<UserDetailsViewModel> Passengers { get; set; }
+        public IEnumerable<ApplicationUser> Passengers { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

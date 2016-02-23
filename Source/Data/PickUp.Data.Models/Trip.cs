@@ -7,6 +7,11 @@
 
     public class Trip : BaseModel<int>
     {
+        public Trip()
+        {
+            this.Passengers = new HashSet<ApplicationUser>();
+        }
+
         public DateTime StartDate { get; set; }
 
         public string Description { get; set; }

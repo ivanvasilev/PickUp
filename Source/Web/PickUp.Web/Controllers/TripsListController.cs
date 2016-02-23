@@ -34,7 +34,7 @@
 
             locations.AddRange(this.locations.GetAll().ToList());
             this.ViewData["Locations"] = new SelectList(locations, "Name", "Name");
-            
+
             var pagesToSkip = (page - 1) * TripsPerPage;
             var allTrips = this.trips.GetAll().Count();
 

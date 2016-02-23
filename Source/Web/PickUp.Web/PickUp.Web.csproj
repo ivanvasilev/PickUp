@@ -419,12 +419,12 @@
     <Content Include="Views\Shared\EditorTemplates\LocationGridViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\VehicleGridViewModel.cshtml" />
     <Content Include="Views\MyTrips\Index.cshtml" />
+    <Content Include="Views\Edit\EditTrip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Edit\" />
     <Folder Include="Views\FileUpload\" />
     <Folder Include="Views\Locations\" />
     <Folder Include="Views\Rates\" />

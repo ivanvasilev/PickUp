@@ -9,11 +9,13 @@
     public class TripsService : ITripsService
     {
         private readonly IIdentifierProvider identifierProvider;
+        private IUsersService users;
         private IDbRepository<Trip> trips;
 
-        public TripsService(IDbRepository<Trip> trips, IIdentifierProvider identifierProvider)
+        public TripsService(IDbRepository<Trip> trips, IIdentifierProvider identifierProvider, IUsersService users)
         {
             this.trips = trips;
+            this.users = users;
             this.identifierProvider = identifierProvider;
         }
 
@@ -50,6 +52,16 @@
         {
             var trip = this.trips.GetById(id);
             return trip;
+        }
+
+        public void Join(string tripId, ApplicationUser user)
+        {
+            var tripToJoin = this.GetById(tripId);
+            tripToJoin.Passengers.Add(user);
+            tripToJoin.AvailableSeats -= 1;
+            this.trips.Save();
+            user.Trips.Add(tripToJoin);
+            this.users.Update(user);
         }
     }
 }

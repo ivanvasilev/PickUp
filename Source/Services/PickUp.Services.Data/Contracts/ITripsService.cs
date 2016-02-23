@@ -16,5 +16,7 @@
         void Update(Trip joke);
 
         void Delete(Trip joke);
+
+        void Join(string tripId, ApplicationUser user);
     }
 }

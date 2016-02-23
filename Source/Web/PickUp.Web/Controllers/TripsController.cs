@@ -55,12 +55,9 @@
         [HttpPost]
         public ActionResult Join(string tripId)
         {
-            var tripToJoin = this.trips.GetById(tripId);
             var passengerId = this.User.Identity.GetUserId();
             var passenger = this.users.GetById(passengerId);
-            tripToJoin.Passengers.Add(passenger);
-            tripToJoin.AvailableSeats -= 1;
-            this.trips.Update(tripToJoin);
+            this.trips.Join(tripId, passenger);
 
             return this.Json(new { PassengerName = passenger.UserName });
         }
