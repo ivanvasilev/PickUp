@@ -22,8 +22,7 @@
         {
             var tripsToShow = this.trips
                 .GetAll()
-                .OrderBy(x => x.CreatedOn)
-                .ThenBy(x => x.Id)
+                .OrderByDescending(x => x.Id)
                 .Take(10)
                 .To<TripViewModel>()
                 .ToList();

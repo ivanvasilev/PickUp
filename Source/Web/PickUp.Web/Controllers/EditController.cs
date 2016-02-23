@@ -1,11 +1,11 @@
 ﻿namespace PickUp.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
     using PickUp.Services.Data.Contracts;
     using PickUp.Web.ViewModels.Users;
     using ViewModels.Trips;
-    using System.Linq;
 
     public class EditController : BaseController
     {

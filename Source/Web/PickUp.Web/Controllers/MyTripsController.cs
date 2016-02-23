@@ -3,11 +3,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data.Contracts;
     using ViewModels.MyTrips;
     using ViewModels.Trips;
-    using Data.Models;
 
     public class MyTripsController : BaseController
     {

@@ -1,12 +1,8 @@
-﻿using PickUp.Data.Models;
-using PickUp.Web.ViewModels.Trips;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PickUp.Web.ViewModels.MyTrips
+﻿namespace PickUp.Web.ViewModels.MyTrips
 {
+    using System.Collections.Generic;
+    using PickUp.Data.Models;
+
     public class MyTripsViewModel
     {
         public IEnumerable<Trip> AttendedTrips { get; set; }

@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
-using PickUp.Data.Models;
-using PickUp.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PickUp.Web.Controllers
+﻿namespace PickUp.Web.Controllers
 {
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using PickUp.Data.Models;
+    using PickUp.Services.Data.Contracts;
+
     public class RatesController : Controller
     {
         private IUsersService users;
@@ -35,7 +31,7 @@ namespace PickUp.Web.Controllers
             ratedUser.Rates.Add(rateToAdd);
             this.users.Update(ratedUser);
 
-            return this.Json(new { VoteValue = rateToAdd.Value});
+            return this.Json(new { VoteValue = rateToAdd.Value });
         }
     }
 }

@@ -38,6 +38,14 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // modelBuilder
+            // .Entity<Trip>()
+            // .HasMany(t => t.Passengers)
+            // .WithMany(t => t.Trips)
+            // .Map(m => { m.ToTable("TripsPassengers");
+            //     m.MapLeftKey("TripId");
+            //     m.MapRightKey("PassengerId");
+            // });
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
