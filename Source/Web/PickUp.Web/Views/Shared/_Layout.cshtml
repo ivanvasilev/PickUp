@@ -23,7 +23,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
                     <li>@Html.ActionLink("Trips", "Index", "TripsList", new { area = string.Empty }, null)</li>
-                    <li>@Html.ActionLink("My Trips", "Index", "MyTrips", new { area = string.Empty }, null)</li>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("My Trips", "Index", "MyTrips", new { area = string.Empty }, null)</li>
+                    }
                     @if (this.User.IsInRole("Driver") || this.User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Create trip", "Index", "CreateTrip", new { area = string.Empty }, null)</li>

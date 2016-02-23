@@ -35,6 +35,7 @@
 
             var topTenDrivers = allDrivers
                 .OrderByDescending(x => x.Rating)
+                .ThenBy(x => x.UserName)
                 .Take(10);
 
             var allPassengers = this.users
@@ -45,6 +46,7 @@
 
             var topTenPassengers = allPassengers
                 .OrderByDescending(x => x.Rating)
+                .ThenBy(x => x.UserName)
                 .Take(10);
 
             var indexViewModel = new IndexViewModel()

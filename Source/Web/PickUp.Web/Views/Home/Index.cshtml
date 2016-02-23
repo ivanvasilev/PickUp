@@ -1,8 +1,9 @@
 ﻿@model PickUp.Web.ViewModels.Home.IndexViewModel
 @{
     ViewBag.Title = "Home Page";
+    var index = 0;
 }
-
+<br />
 <div class="jumbotron">
     <h1>Welcome to PickUp!</h1>
     <p>The place where you can publish about your upcoming trips, so the other users can join the ride and share the costs.</p>
@@ -10,39 +11,49 @@
 </div>
 <div class="row">
     <div class="col-md-8">
-        <h1 style="text-align: center">The 10 newest trips</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Departure time</th>
-                    <th>Available seats</th>
-                    <th>Driver</th>
-                    @if (this.User.Identity.IsAuthenticated)
+        <div class="panel panel-default">
+            <div class="panel-heading text-center"><h4>The 10 newest trips</h4></div>
+            <div class="panel-body">
+                <table class="table table-striped" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Departure time</th>
+                            <th>Available seats</th>
+                            <th>Driver</th>
+                            @if (this.User.Identity.IsAuthenticated)
             {
-                        <th>Details</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var trip in @Model.Trips)
-            {
-                    <tr>
-                        <td>@trip.From</td>
-                        <td>@trip.To</td>
-                        <td>@trip.StartDate</td>
-                        <td>@trip.AvailableSeats</td>
-                        <td>@trip.Driver</td>
-                        @if (this.User.Identity.IsAuthenticated)
+                                <th>Details</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var trip in @Model.Trips)
+                        {
+                            var className = "";
+                            if (index % 2 != 0)
+                            {
+                                className = "success";
+                            }
+                            index += 1;
+                            <tr class="@className">
+                                <td>@trip.From</td>
+                                <td>@trip.To</td>
+                                <td>@trip.StartDate</td>
+                                <td>@trip.AvailableSeats</td>
+                                <td>@trip.Driver</td>
+                                @if (this.User.Identity.IsAuthenticated)
                 {
-                            <td><a href="@trip.Url">See more</a></td>
+                                    <td><a href="@trip.Url">See more</a></td>
+                                }
+                            </tr>
                         }
-                    </tr>
-                }
-                <tr></tr>
-            </tbody>
-        </table>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
         @Html.Partial("_TopDrivers", @Model.TopDrivers)

@@ -174,18 +174,35 @@
         {
             if (this.ModelState.IsValid)
             {
-                var vehicle = new Vehicle()
+                var vehicle = new Vehicle();
+                if (model.IsDriver)
                 {
-                    Model = model.CarModel,
-                    Brand = model.CarBrand,
-                    RegistrationNumber = model.CarRegistrationNumber,
-                    Year = model.CarYear,
-                    Color = model.CarColor
+                    vehicle = new Vehicle()
+                    {
+                        Model = model.CarModel,
+                        Brand = model.CarBrand,
+                        RegistrationNumber = model.CarRegistrationNumber,
+                        Year = model.CarYear,
+                        Color = model.CarColor
+                    };
+                }
+
+                var user = new ApplicationUser
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.Lastname,
+                    Age = model.Age,
+                    ImageId = 2
                 };
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ImageId = 2 };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
-                vehicle.DriverId = user.Id;
-                this.vehicles.Create(vehicle);
+                if (model.IsDriver)
+                {
+                    vehicle.DriverId = user.Id;
+                    this.vehicles.Create(vehicle);
+                }
+
                 if (result.Succeeded)
                 {
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
