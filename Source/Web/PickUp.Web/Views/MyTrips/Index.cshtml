@@ -5,50 +5,12 @@
 
 <h2>Attended Trips</h2>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Departure time</th>
-            <th>Available seats</th>
-            <th>Driver</th>
-            <th>Rate Driver</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var trip in @Model.AttendedTrips)
-            {
-            <tr>
-                <td>@trip.From.Name</td>
-                <td>@trip.To.Name</td>
-                <td>@trip.StartDate</td>
-                <td>@trip.AvailableSeats</td>
-                <td>@trip.Driver.UserName</td>
-                @if (DateTime.Now < @trip.StartDate.AddDays(1))
-                {
-                    <td>
-                        <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
-                    </td>
-                    <td>
-                        <div data-id="@trip.DriverId" data-action="down" class="row"><span class="glyphicon glyphicon-remove"></span></div>
-                    </td>
-                }
-                else
-                {
-                    <td>Pending</td>
-                }
-                <td id="hidden" style="display: none"></td>
-            </tr>
-        }
-        <tr></tr>
-    </tbody>
-</table>
-
-@if (this.ViewBag.IsDriver)
+@if (Model.AttendedTrips.Count() == 0)
 {
-    <h2>Created Trips</h2>
-
+    <h4 style="text-align:center">You haven't participated in any trips yet!</h4>
+}
+else
+{
     <table class="table table-striped">
         <thead>
             <tr>
@@ -56,59 +18,119 @@
                 <th>To</th>
                 <th>Departure time</th>
                 <th>Available seats</th>
-                <th>Edit Trip</th>
-                <th>Rate Passengers</th>
+                <th>Driver</th>
+                <th>Rate Driver</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var trip in @Model.CreatedTrips)
+            @foreach (var trip in @Model.AttendedTrips)
             {
                 <tr>
                     <td>@trip.From.Name</td>
                     <td>@trip.To.Name</td>
                     <td>@trip.StartDate</td>
                     <td>@trip.AvailableSeats</td>
-                    <td><a href="/Edit/EditTrip/@trip.Id">Edit</a></td>
-                    <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm-@trip.Id">Small modal</button>
-                        <div class="modal fade bs-example-modal-sm-@trip.Id" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                        <h4 class="modal-title" id="mySmallModalLabel">Rate Passengers</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        @foreach (var passenger in @trip.Passengers)
-                                        {
-                                            <h4>@passenger.Email</h4>
-                                            <div data-id="@passenger.Id" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
-                                            <div data-id="@passenger.Id" data-action="down" class="row"><span class="glyphicon glyphicon-remove"></span></div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
+                    <td>@trip.Driver.UserName</td>
+                    @if (DateTime.Now < @trip.StartDate.AddDays(1))
+                    {
+                        <td>
+                            <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
+                        </td>
+                        <td>
+                            <div data-id="@trip.DriverId" data-action="down" class="row"><span class="glyphicon glyphicon-remove"></span></div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>Pending</td>
+                    }
+                    <td id="hidden" style="display: none"></td>
                 </tr>
             }
             <tr></tr>
         </tbody>
     </table>
 }
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4> </div>
-            <div class="modal-body"> ... </div>
-        </div>
-    </div>
-</div>
 
+@if (this.ViewBag.IsDriver)
+{
+    <h2>Created Trips</h2>
+    if (Model.CreatedTrips.Count() == 0)
+    {
+        <h4 style="text-align:center">You haven't created any trips yet!</h4>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure time</th>
+                    <th>Available seats</th>
+                    <th>Edit Trip</th>
+                    <th>Rate Passengers</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trip in @Model.CreatedTrips)
+                {
+                    <tr>
+                        <td>@trip.From.Name</td>
+                        <td>@trip.To.Name</td>
+                        <td>@trip.StartDate</td>
+                        <td>@trip.AvailableSeats</td>
+                        <td><a href="/Edit/EditTrip/@trip.Id">Edit</a></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm-@trip.Id">Rate</button>
+                            <div class="modal fade bs-example-modal-sm-@trip.Id" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">Rate Passengers</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @if (trip.Passengers.Count == 0)
+                                            {
+                                                <h4>There are no passengers to rate!</h4>
+                                            }
+                                            else
+                                            {
+                                                foreach (var passenger in @trip.Passengers)
+                                                {
+                                                    <table style="width: 200px">
+                                                        <tr>
+                                                            <td style="text-align:center">
+                                                                <h4 style="text-align:center">@passenger.Email</h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:center">
+                                                                <div data-id="@passenger.Id" data-action="up" class="row"><span class="glyphicon glyphicon-heart" style="display:inline-block"></span></div>
+                                                            </td>
+                                                            <td style="text-align:center">
+                                                                <div data-id="@passenger.Id" data-action="down" class="row"><span class="glyphicon glyphicon-remove" style="display:inline-block"></span></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                <tr></tr>
+            </tbody>
+        </table>
+    }
+}
 <style>
     .glyphicon {
         cursor: pointer;

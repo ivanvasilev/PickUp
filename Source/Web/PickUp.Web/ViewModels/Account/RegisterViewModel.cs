@@ -17,7 +17,7 @@
         [Display(Name = "Last Name")]
         public string Lastname { get; set; }
 
-        [Display(Name = "UserName")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Display(Name = "Age")]
