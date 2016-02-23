@@ -4,7 +4,8 @@
     ViewBag.Title = "Index";
 }
 <br />
-@*@using (Html.BeginForm("Index", "TripsList", FormMethod.Get))
+<input type="hidden" id="totalPages" value="@Model.TotalPages" />
+@using (Html.BeginForm("Index", "TripsList", FormMethod.Get, new { id="search-form"}))
 {
     <div class="row">
         <div class="col-lg-3 text-center">
@@ -19,17 +20,18 @@
             @Html.Label("Start date")
             @(Html.Kendo().DatePicker()
               .Name("datepicker")
-              .Value(DateTime.Now)
+              .Value(string.Empty)
               .Format("dd.MM.yyyy")
               .HtmlAttributes(new { style = "width: 100%" })
             )
         </div>
         <div class="col-lg-3 text-center">
             <br />
+            <input type="text" name="page" id="hiddenPage" value="@Model.CurrentPage" />
             <input type="submit" value="Search" />
         </div>
     </div>
-}*@
+}
 <div style="display: none">
     <div id="fromValue"></div>
     <div id="toValue"></div>
@@ -69,40 +71,68 @@
         }
     </tbody>
 </table>
+@*<nav>
+        <ul class="pagination">
+            @if (Model.CurrentPage != 1)
+            {
+                <li>
+                    <a class="page-button" href="/TripsList/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                var className = string.Empty;
+                if (Model.CurrentPage == i)
+                {
+                    className = "active";
+                }
+                <li class="@className"><a class="page-button" href="/TripsList/Index/@i">@i</a></li>
+            }
+            @if (Model.CurrentPage != Model.TotalPages)
+            {
+                <li>
+                    <a class="page-button" href="/TripsList/Index/@(Model.CurrentPage + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>*@
+
+@*@section Scripts
+    {
+        <script>
+            var queryString = location.search;
+
+            $('.page-button').attr("href", $('.page-button').attr("href") + queryString);
+        </script>
+    }*@
+
 <nav>
     <ul class="pagination">
-        @if (Model.CurrentPage != 1)
-        {
-            <li>
-                <a class="page-button" href="/TripsList/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        }
         @for (int i = 1; i <= Model.TotalPages; i++)
+
         {
-            var className = string.Empty;
-            if (Model.CurrentPage == i)
-            {
-                className = "active";
-            }
-            <li class="@className"><a class="page-button" href="/TripsList/Index/@i">@i</a></li>
-        }
-        @if (Model.CurrentPage != Model.TotalPages)
-        {
-            <li>
-                <a class="page-button" href="/TripsList/Index/@(Model.CurrentPage + 1)" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            <li><a> @i </a></li>
         }
     </ul>
 </nav>
-@*@section Scripts
-{ 
-    <script>
-        var queryString = location.search;
 
-        $('.page-button').attr("href", $('.page-button').attr("href") + queryString);
+@section Scripts {
+    <script>
+        var totalPages = $('#totalPages').val();
+        var currentPage = $('#hiddenPage').val();
+        $('.pagination li a').click(function () {
+            var value = $(this).text();
+            $('#hiddenPage').val(value);
+            $('#search-form').submit();
+        })
     </script>
-}*@
+}
+
+
+
+
+

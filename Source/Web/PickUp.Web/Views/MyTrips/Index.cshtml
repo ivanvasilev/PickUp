@@ -1,0 +1,101 @@
+﻿@model PickUp.Web.ViewModels.MyTrips.MyTripsViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Attended Trips</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure time</th>
+            <th>Available seats</th>
+            <th>Driver</th>
+            <th>Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trip in @Model.AttendedTrips)
+            {
+            <tr>
+                <td>@trip.From.Name</td>
+                <td>@trip.To.Name</td>
+                <td>@trip.StartDate</td>
+                <td>@trip.AvailableSeats</td>
+                <td>@trip.Driver.UserName</td>
+                @if (DateTime.Now < @trip.StartDate.AddDays(1))
+                {
+                    <td>
+                        <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
+                    </td>
+                    <td>
+                        <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-remove"></span></div>
+                    </td>
+                }
+                else
+                {
+                    <td>Pending</td>
+                }
+                <td id="hidden" style="display: none"></td>
+            </tr>
+        }
+        <tr></tr>
+    </tbody>
+</table>
+
+@if (this.ViewBag.IsDriver)
+{
+    <h2>Created Trips</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure time</th>
+                <th>Available seats</th>
+                <th>Driver</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trip in @Model.CreatedTrips)
+            {
+                <tr>
+                    <td>@trip.From.Name</td>
+                    <td>@trip.To.Name</td>
+                    <td>@trip.StartDate</td>
+                    <td>@trip.AvailableSeats</td>
+                    <td><button>Edit</button></td>
+                </tr>
+            }
+            <tr></tr>
+        </tbody>
+    </table>
+}
+<style>
+    .glyphicon {
+        cursor: pointer;
+    }
+</style>
+@section scripts{
+    <script>
+        $("div[data-action='up']").click(function () {
+            var id = $(this).attr("data-id");
+            updateVotesCount(5, id);
+        })
+
+        $("div[data-action='down']").click(function () {
+            var id = $(this).attr("data-id");
+            updateVotesCount(-3, id);
+        })
+
+        function updateVotesCount(value, id) {
+            $.post("/Rates/RateUser", { userId: id, rateValue: value }, function (data) {
+                $("#hidden").show();
+                $("#hidden").html("Rated");
+            })
+        }
+    </script>
+}
