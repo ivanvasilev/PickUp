@@ -13,7 +13,7 @@
             <th>Departure time</th>
             <th>Available seats</th>
             <th>Driver</th>
-            <th>Rate</th>
+            <th>Rate Driver</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
                         <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
                     </td>
                     <td>
-                        <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-remove"></span></div>
+                        <div data-id="@trip.DriverId" data-action="down" class="row"><span class="glyphicon glyphicon-remove"></span></div>
                     </td>
                 }
                 else
@@ -56,7 +56,8 @@
                 <th>To</th>
                 <th>Departure time</th>
                 <th>Available seats</th>
-                <th>Driver</th>
+                <th>Edit Trip</th>
+                <th>Rate Passengers</th>
             </tr>
         </thead>
         <tbody>
@@ -68,12 +69,46 @@
                     <td>@trip.StartDate</td>
                     <td>@trip.AvailableSeats</td>
                     <td><a href="/Edit/EditTrip/@trip.Id">Edit</a></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm-@trip.Id">Small modal</button>
+                        <div class="modal fade bs-example-modal-sm-@trip.Id" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title" id="mySmallModalLabel">Rate Passengers</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        @foreach (var passenger in @trip.Passengers)
+                                        {
+                                            <h4>@passenger.Email</h4>
+                                            <div data-id="@passenger.Id" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
+                                            <div data-id="@passenger.Id" data-action="down" class="row"><span class="glyphicon glyphicon-remove"></span></div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             }
             <tr></tr>
         </tbody>
     </table>
 }
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4> </div>
+            <div class="modal-body"> ... </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .glyphicon {
         cursor: pointer;
@@ -83,11 +118,15 @@
     <script>
         $("div[data-action='up']").click(function () {
             var id = $(this).attr("data-id");
+            $(this).hide();
+            $(this).next().hide();
             updateVotesCount(5, id);
         })
 
         $("div[data-action='down']").click(function () {
             var id = $(this).attr("data-id");
+            $(this).hide();
+            $(this).prev().hide();
             updateVotesCount(-3, id);
         })
 

@@ -5,7 +5,6 @@
 
     public class Rate : BaseModel<int>
     {
-        [Range(1, 5)]
         [Required]
         public int Value { get; set; }
 
