@@ -213,9 +213,10 @@
     <Compile Include="Areas\Administration\ViewModels\Users\UserGridViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Vehicles\VehicleGridInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Vehicles\VehicleGridViewModel.cs" />
+    <Compile Include="Areas\Driver\Controllers\CreateTripController.cs" />
+    <Compile Include="Areas\Driver\DriverAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CreateTripController.cs" />
     <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -357,6 +358,9 @@
     <Content Include="Areas\Administration\Views\TripsGrid\Index.cshtml" />
     <Content Include="Areas\Administration\Views\LocationsGrid\Index.cshtml" />
     <Content Include="Areas\Administration\Views\VehiclesGrid\Index.cshtml" />
+    <Content Include="Areas\Driver\Views\web.config" />
+    <Content Include="Areas\Driver\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Driver\Views\CreateTrip\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -407,7 +411,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Trips\Trips.cshtml" />
-    <Content Include="Views\CreateTrip\Index.cshtml" />
     <Content Include="Views\Trips\ById.cshtml" />
     <Content Include="Views\Shared\_TopDrivers.cshtml" />
     <Content Include="Views\Shared\_TopPassengers.cshtml" />
@@ -424,6 +427,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Driver\Models\" />
+    <Folder Include="Areas\Driver\Views\Shared\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\FileUpload\" />
     <Folder Include="Views\Locations\" />

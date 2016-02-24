@@ -1,13 +1,16 @@
-﻿namespace PickUp.Web.Controllers
-{
-    using System.Linq;
-    using System.Web.Mvc;
-    using Microsoft.AspNet.Identity;
-    using PickUp.Common;
-    using PickUp.Data.Models;
-    using PickUp.Services.Data.Contracts;
-    using PickUp.Web.ViewModels.Trips;
+﻿using Microsoft.AspNet.Identity;
+using PickUp.Common;
+using PickUp.Data.Models;
+using PickUp.Services.Data.Contracts;
+using PickUp.Web.ViewModels.Trips;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
+namespace PickUp.Web.Areas.Driver.Controllers
+{
     [Authorize(Roles = GlobalConstants.AdministratorRoleName + ", " + GlobalConstants.DriverRoleName)]
     public class CreateTripController : Controller
     {
@@ -54,7 +57,7 @@
 
             this.trips.Create(tripToCreate);
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }
 }

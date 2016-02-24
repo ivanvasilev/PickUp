@@ -29,7 +29,7 @@
                     }
                     @if (this.User.IsInRole("Driver") || this.User.IsInRole("Administrator"))
                     {
-                        <li>@Html.ActionLink("Create trip", "Index", "CreateTrip", new { area = string.Empty }, null)</li>
+                        <li>@Html.ActionLink("Create trip", "Index", "CreateTrip", new { area = "Driver" }, null)</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
