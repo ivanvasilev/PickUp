@@ -2,13 +2,13 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Common;
     using Data.Models;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using Services.Data.Contracts;
     using ViewModels.Vehicles;
-    using Common;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class VehiclesGridController : Controller

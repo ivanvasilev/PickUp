@@ -2,11 +2,11 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Common;
     using Microsoft.AspNet.Identity;
     using PickUp.Services.Data.Contracts;
     using PickUp.Web.ViewModels.Users;
     using ViewModels.Trips;
-    using Common;
 
     [Authorize]
     public class EditController : BaseController

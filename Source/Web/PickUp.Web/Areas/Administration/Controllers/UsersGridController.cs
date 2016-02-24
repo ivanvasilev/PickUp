@@ -2,13 +2,13 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Common;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using PickUp.Data.Models;
     using PickUp.Services.Data.Contracts;
     using PickUp.Web.Areas.Administration.ViewModels;
     using PickUp.Web.Infrastructure.Mapping;
-    using Common;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class UsersGridController : Controller

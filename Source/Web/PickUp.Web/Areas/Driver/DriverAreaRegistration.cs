@@ -1,24 +1,23 @@
-﻿using System.Web.Mvc;
-
-namespace PickUp.Web.Areas.Driver
+﻿namespace PickUp.Web.Areas.Driver
 {
-    public class DriverAreaRegistration : AreaRegistration 
+    using System.Web.Mvc;
+
+    public class DriverAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Driver";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Driver_default",
                 "Driver/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new { action = "Index", id = UrlParameter.Optional });
         }
     }
 }

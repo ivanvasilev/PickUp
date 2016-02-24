@@ -1,9 +1,9 @@
 ﻿namespace PickUp.Web.ViewModels.Trips
 {
     using System;
+    using System.Web.Mvc;
     using PickUp.Data.Models;
     using PickUp.Web.Infrastructure.Mapping;
-    using System.Web.Mvc;
 
     public class CreateTripViewModel : IMapFrom<Trip>
     {
