@@ -40,6 +40,7 @@
 
             var tripsToShow = this.trips
                 .GetAll()
+                .OrderByDescending(x => x.Id)
                 .To<PageableTripViewModel>()
                 .ToList();
 

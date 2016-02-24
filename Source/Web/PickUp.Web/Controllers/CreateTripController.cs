@@ -30,6 +30,8 @@
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateTrip(CreateTripViewModel tripToRegister)
         {
             if (!this.ModelState.IsValid)

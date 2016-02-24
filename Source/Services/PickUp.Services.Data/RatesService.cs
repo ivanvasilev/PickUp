@@ -1,5 +1,7 @@
 ﻿namespace PickUp.Services.Data
 {
+    using System;
+    using System.Linq;
     using PickUp.Data.Common;
     using PickUp.Data.Models;
     using PickUp.Services.Data.Contracts;
@@ -16,6 +18,16 @@
         public void Create(Rate rate)
         {
             this.rates.Add(rate);
+            this.rates.Save();
+        }
+
+        public IQueryable<Rate> GetAll()
+        {
+            return this.rates.All();
+        }
+
+        public void Update(Rate rate)
+        {
             this.rates.Save();
         }
     }

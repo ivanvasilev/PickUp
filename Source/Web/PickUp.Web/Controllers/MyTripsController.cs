@@ -9,6 +9,7 @@
     using ViewModels.MyTrips;
     using ViewModels.Trips;
 
+    [Authorize]
     public class MyTripsController : BaseController
     {
         private ITripsService trips;

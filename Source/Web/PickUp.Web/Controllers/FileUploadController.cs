@@ -7,6 +7,7 @@
     using PickUp.Data.Models;
     using PickUp.Services.Data.Contracts;
 
+    [Authorize]
     public class FileUploadController : Controller
     {
         private IImagesService images;

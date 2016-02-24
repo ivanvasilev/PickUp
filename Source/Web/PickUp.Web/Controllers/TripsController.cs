@@ -7,6 +7,7 @@
     using PickUp.Web.Infrastructure.Mapping;
     using PickUp.Web.ViewModels.Trips;
 
+    [Authorize]
     public class TripsController : BaseController
     {
         private ITripsService trips;

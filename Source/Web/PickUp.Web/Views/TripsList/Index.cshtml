@@ -46,6 +46,10 @@
             <th>Available Seats</th>
             <th>Start date</th>
             <th>Driver</th>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <th>Details</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -67,6 +71,10 @@
                 <td>
                     @trip.Driver
                 </td>
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <td><a href="@trip.Url">See more</a></td>
+                }
             </tr>
         }
     </tbody>

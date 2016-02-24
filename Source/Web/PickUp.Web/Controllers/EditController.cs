@@ -6,7 +6,9 @@
     using PickUp.Services.Data.Contracts;
     using PickUp.Web.ViewModels.Users;
     using ViewModels.Trips;
+    using Common;
 
+    [Authorize]
     public class EditController : BaseController
     {
         private IUsersService users;
@@ -21,6 +23,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditProfile(UserDetailsViewModel user)
         {
             var userId = this.User.Identity.GetUserId();
@@ -44,6 +47,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditTrip(TripDetailsViewModel trip)
         {
             var tripToUpdate = this.trips.GetByIntId(trip.Id);

@@ -1,10 +1,13 @@
 ﻿namespace PickUp.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
+    using Kendo.Mvc.Extensions;
     using Microsoft.AspNet.Identity;
     using PickUp.Data.Models;
     using PickUp.Services.Data.Contracts;
 
+    [Authorize]
     public class RatesController : Controller
     {
         private IUsersService users;
@@ -19,19 +22,36 @@
         [HttpPost]
         public ActionResult RateUser(string userId, int rateValue)
         {
-            var rateToAdd = new Rate()
+            var raterId = this.User.Identity.GetUserId();
+            var rate = this.rates
+                .GetAll()
+                .Where(x => x.RaterId == raterId &&
+                            x.RatedId == userId)
+                .FirstOrDefault();
+
+            if (rate != null)
             {
-                RaterId = this.User.Identity.GetUserId(),
-                RatedId = userId,
-                Value = rateValue
-            };
+                rate.Value = rateValue;
+                this.rates.Update(rate);
 
-            this.rates.Create(rateToAdd);
-            var ratedUser = this.users.GetById(userId);
-            ratedUser.Rates.Add(rateToAdd);
-            this.users.Update(ratedUser);
+                return this.Json(new { VoteValue = rate.Value });
+            }
+            else
+            {
+                var rateToAdd = new Rate()
+                {
+                    RaterId = this.User.Identity.GetUserId(),
+                    RatedId = userId,
+                    Value = rateValue
+                };
 
-            return this.Json(new { VoteValue = rateToAdd.Value });
+                this.rates.Create(rateToAdd);
+                var ratedUser = this.users.GetById(userId);
+                ratedUser.Rates.Add(rateToAdd);
+                this.users.Update(ratedUser);
+
+                return this.Json(new { VoteValue = rateToAdd.Value });
+            }
         }
     }
 }

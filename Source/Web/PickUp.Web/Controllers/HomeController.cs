@@ -27,6 +27,31 @@
                 .To<TripViewModel>()
                 .ToList();
 
+            // var topTenDrivers =
+            //     this.Cache.Get(
+            //         "topTenDrivers",
+            //         () => this.users
+            //     .GetAll()
+            //     .Where(x => x.Roles.Any(r => r.RoleId == "fdb554c1-6ed0-47b9-bd4f-cb6925868ef0"))
+            //     .To<DriverViewModel>()
+            //     .OrderByDescending(x => x.Rating)
+            //     .ThenBy(x => x.UserName)
+            //     .Take(10)
+            //     .ToList(),
+            //         24 * 60 * 60);
+
+            // var topTenPassengers =
+            //     this.Cache.Get(
+            //         "topTenPassengers",
+            //         () => this.users
+            //     .GetAll()
+            //     .Where(x => x.Roles.Any(r => r.RoleId == "3d08fbe7-3e67-4493-8170-59a25c8dfb6c"))
+            //     .To<PassengerViewModel>()
+            //     .OrderByDescending(x => x.Rating)
+            //     .ThenBy(x => x.UserName)
+            //     .Take(10)
+            //     .ToList(),
+            //         24 * 60 * 60);ss
             var allDrivers = this.users
                 .GetAll()
                 .Where(x => x.Roles.Any(r => r.RoleId == "fdb554c1-6ed0-47b9-bd4f-cb6925868ef0"))

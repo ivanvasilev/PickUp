@@ -5,6 +5,7 @@
     using Services.Data.Contracts;
     using ViewModels.Users;
 
+    [Authorize]
     public class UsersController : BaseController
     {
         private IUsersService users;
