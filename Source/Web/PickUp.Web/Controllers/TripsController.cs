@@ -58,8 +58,9 @@
             var passengerId = this.User.Identity.GetUserId();
             var passenger = this.users.GetById(passengerId);
             this.trips.Join(tripId, passenger);
+            var availableSeats = this.trips.GetById(tripId).AvailableSeats;
 
-            return this.Json(new { PassengerName = passenger.UserName });
+            return this.Json(new { PassengerName = passenger.UserName, AvailableSeats = availableSeats });
         }
     }
 }

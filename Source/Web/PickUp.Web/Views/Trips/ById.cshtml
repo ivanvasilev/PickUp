@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-1">
         <div class="well text-center">
-            <div class="row">@Model.AvailableSeats</div>
+            <div class="row" id="availableSeats">@Model.AvailableSeats</div>
             <div class="row">Available Seats</div>
         </div>
         @if (!this.ViewBag.IsCurrentUserJoinedTheTrip && !this.ViewBag.IsCurrentUserTheDriver && Model.AvailableSeats > 0)
@@ -32,6 +32,10 @@
         <div class="row">
             <h3>Passengers: </h3>
             <p id="newPassenger" style="display: none"></p>
+            @if (Model.Passengers.Count() == 0)
+            {
+                <h4 id="noPassengersText">There are still no passengers in this trip!</h4>
+            }
             @foreach (var passenger in Model.Passengers)
             {
                 <p>@passenger.UserName</p>
@@ -48,11 +52,13 @@
             var hrefParams = location.href.split("/");
             var tripId = hrefParams[hrefParams.length - 1];
             $.post("/Trips/Join", { tripId: tripId }, function (data) {
-                console.log(data);
                 var name = data.PassengerName;
-                console.log(name);
+                var availableSeats = data.AvailableSeats;
                 $("#newPassenger").show();
+                $("#join").hide();
                 $("#newPassenger").html(name);
+                $("#availableSeats").html(availableSeats);
+                $("#noPassengersText").hide();
             })
         })
     </script>

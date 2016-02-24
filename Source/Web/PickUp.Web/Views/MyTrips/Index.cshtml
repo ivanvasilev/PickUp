@@ -34,17 +34,15 @@ else
                     @if (DateTime.Now < @trip.StartDate.AddDays(1))
                     {
                         <td>
-                            <div data-id="@trip.DriverId" data-action="up" class="row"><span class="glyphicon glyphicon-heart"></span></div>
-                        </td>
-                        <td>
-                            <div data-id="@trip.DriverId" data-action="down" class="row"><span class="glyphicon glyphicon-remove"></span></div>
+                            <div data-id="@trip.DriverId" data-action="up" class="row" style="float: left"><span class="glyphicon glyphicon-heart"></span></div>
+                            <div data-id="@trip.DriverId" data-action="down" class="row" style="float: right; margin-right:60px"><span class="glyphicon glyphicon-remove"></span></div>
+                            <div class="rated" style="display: none">Rated</div>
                         </td>
                     }
                     else
                     {
                         <td>Pending</td>
                     }
-                    <td id="hidden" style="display: none"></td>
                 </tr>
             }
             <tr></tr>
@@ -102,18 +100,18 @@ else
                                             {
                                                 foreach (var passenger in @trip.Passengers)
                                                 {
-                                                    <table style="width: 200px">
+                                                    <table style="width: 100%">
                                                         <tr>
                                                             <td style="text-align:center">
                                                                 <h4 style="text-align:center">@passenger.Email</h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align:center">
-                                                                <div data-id="@passenger.Id" data-action="up" class="row"><span class="glyphicon glyphicon-heart" style="display:inline-block"></span></div>
-                                                            </td>
-                                                            <td style="text-align:center">
-                                                                <div data-id="@passenger.Id" data-action="down" class="row"><span class="glyphicon glyphicon-remove" style="display:inline-block"></span></div>
+                                                            <td>
+                                                                <div data-id="@passenger.Id" data-action="up" class="row" style="float: left; margin-left:60px"><span class="glyphicon glyphicon-heart"></span></div>
+                                                                <div data-id="@passenger.Id" data-action="down" class="row" style="float: right; margin-right:60px"><span class="glyphicon glyphicon-remove"></span></div>
+                                                                <div class="rated" style="display: none; text-align:center">Rated</div>
+                                                                <hr />
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -142,6 +140,7 @@ else
             var id = $(this).attr("data-id");
             $(this).hide();
             $(this).next().hide();
+            $(this).next().next().show()
             updateVotesCount(5, id);
         })
 
@@ -149,6 +148,7 @@ else
             var id = $(this).attr("data-id");
             $(this).hide();
             $(this).prev().hide();
+            $(this).next().show();
             updateVotesCount(-3, id);
         })
 
