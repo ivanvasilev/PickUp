@@ -8,8 +8,9 @@
     using Kendo.Mvc.UI;
     using Services.Data.Contracts;
     using ViewModels.Trips;
+    using Common;
 
-    [Authorize]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class TripsGridController : Controller
     {
         private ITripsService trips;

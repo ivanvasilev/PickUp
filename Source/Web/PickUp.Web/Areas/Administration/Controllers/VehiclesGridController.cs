@@ -8,7 +8,9 @@
     using Kendo.Mvc.UI;
     using Services.Data.Contracts;
     using ViewModels.Vehicles;
+    using Common;
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class VehiclesGridController : Controller
     {
         private IVehiclesService vehicles;

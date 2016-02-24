@@ -8,8 +8,9 @@
     using PickUp.Services.Data.Contracts;
     using PickUp.Web.Areas.Administration.ViewModels;
     using PickUp.Web.Infrastructure.Mapping;
+    using Common;
 
-    [Authorize]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class UsersGridController : Controller
     {
         private IUsersService users;

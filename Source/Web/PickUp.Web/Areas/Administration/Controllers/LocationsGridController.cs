@@ -8,7 +8,9 @@
     using Kendo.Mvc.UI;
     using Services.Data.Contracts;
     using ViewModels.Locations;
+    using Common;
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class LocationsGridController : Controller
     {
         private ILocationsService locations;
