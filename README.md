@@ -43,6 +43,7 @@ The administrator can do all of the above and also he has an administration area
  - Using AJAX forms for editing entities and joining trips
  - Using caching in the home page
  - Using Autofac and Automapper
+ - Wrote 15 unit tests for the routes.
  - Appling error handling and data validation to avoid crashes when invalid data is entered, where possible
  - Prevent from security holes (XSS, XSRF, Parameter Tampering, etc.)
  - Handle correctly the special HTML characters and tags like <script>, <br />, etc.
